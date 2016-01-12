@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#define kAppKey         @"2045436852"
+#import "WeiboSDK.h"
+#define kAppKey         @"4115683295"
 #define kRedirectURI    @"http://www.sina.com"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, WeiboSDKDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) NSString *wbtoken;
+@property (strong, nonatomic) NSString *wbRefreshToken;
+@property (strong, nonatomic) NSString *wbCurrentUserID;
 
 @end
 
