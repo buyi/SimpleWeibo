@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "DataHolder.h"
 
 
 
@@ -86,9 +87,16 @@
                                               cancelButtonTitle:NSLocalizedString(@"确定", nil)
                                               otherButtonTitles:nil];
         
+        
+        
         self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
+        [DataHolder sharedInstance].wbtoken =[(WBAuthorizeResponse *)response accessToken];
+
         self.wbCurrentUserID = [(WBAuthorizeResponse *)response userID];
+         [DataHolder sharedInstance].wbCurrentUserID = [(WBAuthorizeResponse *)response userID];
+        
         self.wbRefreshToken = [(WBAuthorizeResponse *)response refreshToken];
+         [DataHolder sharedInstance].wbRefreshToken =[(WBAuthorizeResponse *)response refreshToken];
         [alert show];
     }
 }
@@ -100,10 +108,12 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[DataHolder sharedInstance] saveData];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+     [[DataHolder sharedInstance] loadData];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

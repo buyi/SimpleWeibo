@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "WeiboSDK.h"
+#import "DataHolder.h"
 
 @interface ViewController()<UIScrollViewDelegate>
 {
@@ -49,6 +50,12 @@
     [self.shareButton addTarget:self action:@selector(shareButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     self.shareButton.frame = CGRectMake(210, 200, 90, 110);
     [scrollView addSubview:self.shareButton];
+    
+    UIButton *friendsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [friendsButton setTitle:NSLocalizedString(@"friend", nil) forState:UIControlStateNormal];
+    [friendsButton addTarget:self action:@selector(testRequestForFriendsListOfUser) forControlEvents:UIControlEventTouchUpInside];
+    friendsButton.frame = CGRectMake(240, 90, 280, 40);
+    [scrollView addSubview:friendsButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,6 +121,53 @@
 //    }
     
     return message;
+}
+
+- (void)testRequestForFriendsListOfUser
+{
+    AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    //just set extraPara for http request as you want, more paras description can be found on the API website,
+    //for this API, details are from http://open.weibo.com/wiki/2/friendships/friends/en .
+    NSMutableDictionary* extraParaDict = [NSMutableDictionary dictionary];
+//    [extraParaDict setObject:@"2" forKey:@"cursor"];
+//    [extraParaDict setObject:@"3" forKey:@"count"];
+    
+    NSLog(@"wbCurrentUserID is %@", [DataHolder sharedInstance].wbCurrentUserID);
+     NSLog(@"wbtoken is %@", [DataHolder sharedInstance].wbtoken);
+    
+    [WBHttpRequest requestForFriendsListOfUser: [DataHolder sharedInstance].wbCurrentUserID withAccessToken:[DataHolder sharedInstance].wbtoken andOtherProperties:extraParaDict queue:nil withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+        
+        DemoRequestHanlder(httpRequest, result, error);
+        
+    }];
+}
+
+void DemoRequestHanlder(WBHttpRequest *httpRequest, id result, NSError *error)
+{
+    NSString *title = nil;
+    UIAlertView *alert = nil;
+    
+    if (error)
+    {
+        title = NSLocalizedString(@"请求异常", nil);
+        alert = [[UIAlertView alloc] initWithTitle:title
+                                           message:[NSString stringWithFormat:@"%@",error]
+                                          delegate:nil
+                                 cancelButtonTitle:NSLocalizedString(@"确定", nil)
+                                 otherButtonTitles:nil];
+    }
+    else
+    {
+        title = NSLocalizedString(@"收到网络回调", nil);
+        alert = [[UIAlertView alloc] initWithTitle:title
+                                           message:[NSString stringWithFormat:@"%@",result]
+                                          delegate:nil
+                                 cancelButtonTitle:NSLocalizedString(@"确定", nil)
+                                 otherButtonTitles:nil];
+    }
+    
+    [alert show];
 }
 
 
