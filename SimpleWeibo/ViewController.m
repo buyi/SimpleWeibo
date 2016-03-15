@@ -20,17 +20,23 @@
    
 }
 @property (nonatomic, strong) UIButton *shareButton;
+//@property ViewController *obj;
 @end
 
-@interface ViewController ()
+@interface ViewController () {
+
+}
 
 @end
 
 @implementation ViewController
+static ViewController *obj;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    obj = self;
     
     UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.showsHorizontalScrollIndicator = YES;
@@ -185,7 +191,7 @@ void DemoRequestHanlder(WBHttpRequest *httpRequest, id result, NSError *error)
         
         BYStatusCellsViewController *first = [[BYStatusCellsViewController alloc]init];
         first.status = array;
-//        [self.navigationController pushViewController:first animated:YES];
+        [obj.navigationController pushViewController:first animated:YES];
         
         alert = [[UIAlertView alloc] initWithTitle:title
                                            message:[NSString stringWithFormat:@"%@",result]

@@ -31,10 +31,12 @@
     //初始化数据
 //    [self initData];
 //    NSLog("")
+    _statusCells=[[NSMutableArray alloc]init];
     
     for (WeiboUser* object in _status) {
 //        NSLog(@"array=%@", object.screenName);
-//        
+//
+//         [_status addObject:object];
         BYStatusTableViewCell *cell=[[BYStatusTableViewCell alloc]init];
                 [_statusCells addObject:cell];
     }
