@@ -30,11 +30,15 @@
     self.window.backgroundColor = [UIColor redColor];
     [self.window makeKeyAndVisible];
     
+    ViewController *controller = [ViewController new];
+    UINavigationController *firstNav = [[UINavigationController alloc]initWithRootViewController:controller];
+    firstNav.tabBarItem = [[UITabBarItem alloc]initWithTabBarSystemItem:UITabBarSystemItemRecents tag:0];
+    
+    self.window.rootViewController = firstNav;
     
     //'NSInternalInconsistencyException', reason: 'Application windows are expected to have a root view controller at the end of application launch'
     
-    ViewController *controller = [ViewController new];
-    self.window.rootViewController = controller;
+  
     
     // Override point for customization after application launch.
     return YES;

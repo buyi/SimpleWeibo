@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "WeiboSDK.h"
 #import "DataHolder.h"
+#import "weiboUser.h"
+#import "BYStatusCellsViewController.h"
 
 @interface ViewController()<UIScrollViewDelegate>
 {
@@ -160,6 +162,31 @@ void DemoRequestHanlder(WBHttpRequest *httpRequest, id result, NSError *error)
     else
     {
         title = NSLocalizedString(@"收到网络回调", nil);
+//        NSDictionary *weatherDic = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableLeaves error:&error];
+//        
+//          NSLog(@"weatherDic is %@", weatherDic);
+        
+        NSArray* array = [result objectForKey:@"users"];
+          NSLog(@"array is %@", array);
+        
+        for (WeiboUser* object in array) {
+            NSLog(@"array=%@", object.screenName);
+        }
+        
+        
+        NSNumber *next_cursor = [result objectForKey:@"next_cursor"];
+          NSLog(@"next_cursor is %@", next_cursor);
+        
+         NSNumber *previous_cursor = [result objectForKey:@"previous_cursor"];
+         NSLog(@"previous_cursor is %@", previous_cursor);
+        
+        NSNumber *total_number = [result objectForKey:@"total_number"];
+        NSLog(@"total_number is %@", total_number);
+        
+        BYStatusCellsViewController *first = [[BYStatusCellsViewController alloc]init];
+        first.status = array;
+//        [self.navigationController pushViewController:first animated:YES];
+        
         alert = [[UIAlertView alloc] initWithTitle:title
                                            message:[NSString stringWithFormat:@"%@",result]
                                           delegate:nil

@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3A510FE73AE1FDF8A90E442F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD493F95473695631A6DB86 /* libPods.a */; };
+		E73240C21C46517F00AF5D22 /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = E73240C11C46517F00AF5D22 /* DataHolder.m */; };
 		E7A7B5261C43529C0023E4AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7B5251C43529C0023E4AC /* main.m */; };
 		E7A7B5291C43529C0023E4AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7B5281C43529C0023E4AC /* AppDelegate.m */; };
 		E7A7B52C1C43529C0023E4AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7B52B1C43529C0023E4AC /* ViewController.m */; };
 		E7A7B5311C43529C0023E4AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A7B5301C43529C0023E4AC /* Assets.xcassets */; };
 		E7A7B53F1C43529C0023E4AC /* SimpleWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7B53E1C43529C0023E4AC /* SimpleWeiboTests.m */; };
 		E7A7B54A1C43529C0023E4AC /* SimpleWeiboUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7B5491C43529C0023E4AC /* SimpleWeiboUITests.m */; };
+		E7BE85621C980F6F0093C3EB /* WeiboStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BE85611C980F6F0093C3EB /* WeiboStatus.m */; };
+		E7BE85651C9817620093C3EB /* BYStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BE85641C9817620093C3EB /* BYStatusTableViewCell.m */; };
+		E7BE85681C9843EB0093C3EB /* BYStatusCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BE85671C9843EB0093C3EB /* BYStatusCellsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,8 @@
 /* Begin PBXFileReference section */
 		ACD493F95473695631A6DB86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20A1EC5BEEA405C3235C3DC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E73240C01C46517F00AF5D22 /* DataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHolder.h; sourceTree = "<group>"; };
+		E73240C11C46517F00AF5D22 /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHolder.m; sourceTree = "<group>"; };
 		E7A7B5211C43529C0023E4AC /* SimpleWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A7B5251C43529C0023E4AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E7A7B5271C43529C0023E4AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -50,6 +56,12 @@
 		E7A7B5451C43529C0023E4AC /* SimpleWeiboUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleWeiboUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A7B5491C43529C0023E4AC /* SimpleWeiboUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleWeiboUITests.m; sourceTree = "<group>"; };
 		E7A7B54B1C43529C0023E4AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7BE85601C980F6F0093C3EB /* WeiboStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboStatus.h; sourceTree = "<group>"; };
+		E7BE85611C980F6F0093C3EB /* WeiboStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboStatus.m; sourceTree = "<group>"; };
+		E7BE85631C9817620093C3EB /* BYStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYStatusTableViewCell.h; sourceTree = "<group>"; };
+		E7BE85641C9817620093C3EB /* BYStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYStatusTableViewCell.m; sourceTree = "<group>"; };
+		E7BE85661C9843EB0093C3EB /* BYStatusCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYStatusCellsViewController.h; sourceTree = "<group>"; };
+		E7BE85671C9843EB0093C3EB /* BYStatusCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYStatusCellsViewController.m; sourceTree = "<group>"; };
 		F28FF2FEB3935FE4234EF75F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +140,14 @@
 				E7A7B5301C43529C0023E4AC /* Assets.xcassets */,
 				E7A7B5351C43529C0023E4AC /* Info.plist */,
 				E7A7B5241C43529C0023E4AC /* Supporting Files */,
+				E73240C01C46517F00AF5D22 /* DataHolder.h */,
+				E73240C11C46517F00AF5D22 /* DataHolder.m */,
+				E7BE85601C980F6F0093C3EB /* WeiboStatus.h */,
+				E7BE85611C980F6F0093C3EB /* WeiboStatus.m */,
+				E7BE85631C9817620093C3EB /* BYStatusTableViewCell.h */,
+				E7BE85641C9817620093C3EB /* BYStatusTableViewCell.m */,
+				E7BE85661C9843EB0093C3EB /* BYStatusCellsViewController.h */,
+				E7BE85671C9843EB0093C3EB /* BYStatusCellsViewController.m */,
 			);
 			path = SimpleWeibo;
 			sourceTree = "<group>";
@@ -338,9 +358,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7BE85651C9817620093C3EB /* BYStatusTableViewCell.m in Sources */,
+				E7BE85681C9843EB0093C3EB /* BYStatusCellsViewController.m in Sources */,
+				E7BE85621C980F6F0093C3EB /* WeiboStatus.m in Sources */,
 				E7A7B52C1C43529C0023E4AC /* ViewController.m in Sources */,
 				E7A7B5291C43529C0023E4AC /* AppDelegate.m in Sources */,
 				E7A7B5261C43529C0023E4AC /* main.m in Sources */,
+				E73240C21C46517F00AF5D22 /* DataHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
