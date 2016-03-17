@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3A510FE73AE1FDF8A90E442F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD493F95473695631A6DB86 /* libPods.a */; };
+		E72D9A201C9AAC8A00B38CCA /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */; };
+		E72D9A331C9AC00B00B38CCA /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A2B1C9AC00B00B38CCA /* EGORefreshTableFooterView.m */; };
+		E72D9A341C9AC00B00B38CCA /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A2D1C9AC00B00B38CCA /* EGORefreshTableHeaderView.m */; };
+		E72D9A351C9AC00B00B38CCA /* EGORefreshTableHeaderView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A2F1C9AC00B00B38CCA /* EGORefreshTableHeaderView+Helper.m */; };
+		E72D9A361C9AC00B00B38CCA /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A321C9AC00B00B38CCA /* LoadMoreTableFooterView.m */; };
 		E73240C21C46517F00AF5D22 /* DataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = E73240C11C46517F00AF5D22 /* DataHolder.m */; };
 		E7A7B5261C43529C0023E4AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7B5251C43529C0023E4AC /* main.m */; };
 		E7A7B5291C43529C0023E4AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7B5281C43529C0023E4AC /* AppDelegate.m */; };
@@ -59,6 +64,17 @@
 /* Begin PBXFileReference section */
 		ACD493F95473695631A6DB86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20A1EC5BEEA405C3235C3DC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E72D9A1E1C9AAC8A00B38CCA /* RefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableView.h; sourceTree = "<group>"; };
+		E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableView.m; sourceTree = "<group>"; };
+		E72D9A2A1C9AC00B00B38CCA /* EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableFooterView.h; sourceTree = "<group>"; };
+		E72D9A2B1C9AC00B00B38CCA /* EGORefreshTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableFooterView.m; sourceTree = "<group>"; };
+		E72D9A2C1C9AC00B00B38CCA /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		E72D9A2D1C9AC00B00B38CCA /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		E72D9A2E1C9AC00B00B38CCA /* EGORefreshTableHeaderView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EGORefreshTableHeaderView+Helper.h"; sourceTree = "<group>"; };
+		E72D9A2F1C9AC00B00B38CCA /* EGORefreshTableHeaderView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EGORefreshTableHeaderView+Helper.m"; sourceTree = "<group>"; };
+		E72D9A301C9AC00B00B38CCA /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
+		E72D9A311C9AC00B00B38CCA /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
+		E72D9A321C9AC00B00B38CCA /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
 		E73240C01C46517F00AF5D22 /* DataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHolder.h; sourceTree = "<group>"; };
 		E73240C11C46517F00AF5D22 /* DataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHolder.m; sourceTree = "<group>"; };
 		E7A7B5211C43529C0023E4AC /* SimpleWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +183,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E72D9A371C9AC01800B38CCA /* refresh */ = {
+			isa = PBXGroup;
+			children = (
+				E72D9A2A1C9AC00B00B38CCA /* EGORefreshTableFooterView.h */,
+				E72D9A2B1C9AC00B00B38CCA /* EGORefreshTableFooterView.m */,
+				E72D9A2C1C9AC00B00B38CCA /* EGORefreshTableHeaderView.h */,
+				E72D9A2D1C9AC00B00B38CCA /* EGORefreshTableHeaderView.m */,
+				E72D9A2E1C9AC00B00B38CCA /* EGORefreshTableHeaderView+Helper.h */,
+				E72D9A2F1C9AC00B00B38CCA /* EGORefreshTableHeaderView+Helper.m */,
+				E72D9A301C9AC00B00B38CCA /* EGOViewCommon.h */,
+				E72D9A311C9AC00B00B38CCA /* LoadMoreTableFooterView.h */,
+				E72D9A321C9AC00B00B38CCA /* LoadMoreTableFooterView.m */,
+			);
+			name = refresh;
+			sourceTree = "<group>";
+		};
 		E7A7B5181C43529C0023E4AC = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +224,7 @@
 		E7A7B5231C43529C0023E4AC /* SimpleWeibo */ = {
 			isa = PBXGroup;
 			children = (
+				E72D9A371C9AC01800B38CCA /* refresh */,
 				E7BE85AD1C9A5B860093C3EB /* status */,
 				E7BE85721C994F8A0093C3EB /* Libs */,
 				E7BE85691C994E6A0093C3EB /* Model */,
@@ -210,6 +243,8 @@
 				E7BE85671C9843EB0093C3EB /* BYUsersCellsViewController.m */,
 				E7BE85631C9817620093C3EB /* BYUsersTableViewCell.h */,
 				E7BE85641C9817620093C3EB /* BYUsersTableViewCell.m */,
+				E72D9A1E1C9AAC8A00B38CCA /* RefreshTableView.h */,
+				E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */,
 			);
 			path = SimpleWeibo;
 			sourceTree = "<group>";
@@ -515,6 +550,7 @@
 			files = (
 				E7BE85931C9950960093C3EB /* MKNetworkOperation.m in Sources */,
 				E7BE85651C9817620093C3EB /* BYUsersTableViewCell.m in Sources */,
+				E72D9A331C9AC00B00B38CCA /* EGORefreshTableFooterView.m in Sources */,
 				E7BE85681C9843EB0093C3EB /* BYUsersCellsViewController.m in Sources */,
 				E7BE85A51C9A4A970093C3EB /* Geo.m in Sources */,
 				E7BE858F1C9950960093C3EB /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -524,7 +560,9 @@
 				E7A7B5291C43529C0023E4AC /* AppDelegate.m in Sources */,
 				E7BE85AB1C9A5B020093C3EB /* BYStatusCellsViewController.m in Sources */,
 				E7BE858E1C9950960093C3EB /* NSDictionary+RequestEncoding.m in Sources */,
+				E72D9A351C9AC00B00B38CCA /* EGORefreshTableHeaderView+Helper.m in Sources */,
 				E7BE85901C9950960093C3EB /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				E72D9A201C9AAC8A00B38CCA /* RefreshTableView.m in Sources */,
 				E7BE859F1C9A44960093C3EB /* SBJSON.m in Sources */,
 				E7BE859D1C9A44960093C3EB /* NSObject+SBJSON.m in Sources */,
 				E7BE85AC1C9A5B020093C3EB /* BYStatusTableViewCell.m in Sources */,
@@ -533,10 +571,12 @@
 				E7BE858B1C9950960093C3EB /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				E7BE85921C9950960093C3EB /* MKNetworkEngine.m in Sources */,
 				E7A7B5261C43529C0023E4AC /* main.m in Sources */,
+				E72D9A341C9AC00B00B38CCA /* EGORefreshTableHeaderView.m in Sources */,
 				E7BE856C1C994E8B0093C3EB /* HttpBaseModel.m in Sources */,
 				E7BE856F1C994E9A0093C3EB /* Status.m in Sources */,
 				E73240C21C46517F00AF5D22 /* DataHolder.m in Sources */,
 				E7BE85911C9950960093C3EB /* UIImageView+MKNetworkKitAdditions.m in Sources */,
+				E72D9A361C9AC00B00B38CCA /* LoadMoreTableFooterView.m in Sources */,
 				E7BE859E1C9A44960093C3EB /* NSString+SBJSON.m in Sources */,
 				E7BE858D1C9950960093C3EB /* NSDate+RFC1123.m in Sources */,
 			);
