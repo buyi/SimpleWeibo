@@ -6,9 +6,8 @@
 //  Copyright © 2016年 buyi. All rights reserved.
 //
 
-#import "BYStatusTableViewCell.h"
-#import "Status.h"
-#import "User.h"
+#import "BYUsersTableViewCell.h"
+#import "WeiboUser.h"
 
 #define KCColor(r,g,b) [UIColor colorWithHue:r/255.0 saturation:g/255.0 brightness:b/255.0 alpha:1] //颜色宏定义
 #define kStatusTableViewCellControlSpacing 10 //控件间距
@@ -26,7 +25,7 @@
 #define kStatusTableViewCellTextFontSize 14
 
 
-@interface BYStatusTableViewCell(){
+@interface BYUsersTableViewCell(){
     UIImageView *_avatar;//头像
     UIImageView *_mbType;//会员类型
     UILabel *_userName;
@@ -37,7 +36,7 @@
 
 @end
 
-@implementation BYStatusTableViewCell
+@implementation BYUsersTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -80,11 +79,11 @@
 }
 
 #pragma mark 设置微博
--(void)setStatus:(Status *)status{
+-(void)setStatus:(WeiboUser *)status{
     //设置头像大小和位置
     CGFloat avatarX=10,avatarY=10;
     CGRect avatarRect=CGRectMake(avatarX, avatarY, kStatusTableViewCellAvatarWidth, kStatusTableViewCellAvatarHeight);
-    _avatar.image=[UIImage imageNamed:status.user.avatarLarge];
+    _avatar.image=[UIImage imageNamed:status.profileImageUrl];
     _avatar.frame=avatarRect;
     
     
@@ -92,9 +91,9 @@
     CGFloat userNameX= CGRectGetMaxX(_avatar.frame)+kStatusTableViewCellControlSpacing ;
     CGFloat userNameY=avatarY;
     //根据文本内容取得文本占用空间大小
-    CGSize userNameSize=[status.user.screenName sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellUserNameFontSize]}];
+    CGSize userNameSize=[status.screenName sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellUserNameFontSize]}];
     CGRect userNameRect=CGRectMake(userNameX, userNameY, userNameSize.width,userNameSize.height);
-    _userName.text=status.user.screenName;
+    _userName.text=status.screenName;
     _userName.frame=userNameRect;
     
     
@@ -102,25 +101,25 @@
     CGFloat mbTypeX=CGRectGetMaxX(_userName.frame)+kStatusTableViewCellControlSpacing;
     CGFloat mbTypeY=avatarY;
     CGRect mbTypeRect=CGRectMake(mbTypeX, mbTypeY, kStatusTableViewCellMbTypeWidth, kStatusTableViewCellMbTypeHeight);
-    _mbType.image=[UIImage imageNamed:status.user.verifiedReason];
+    _mbType.image=[UIImage imageNamed:status.mbtype];
     _mbType.frame=mbTypeRect;
     
     
     //设置发布日期大小和位置
-    CGSize createAtSize=[status.createdAt sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kStatusTableViewCellCreateAtFontSize]}];
+    CGSize createAtSize=[status.createdTime sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kStatusTableViewCellCreateAtFontSize]}];
     CGFloat createAtX=userNameX;
     CGFloat createAtY=CGRectGetMaxY(_avatar.frame)-createAtSize.height;
     CGRect createAtRect=CGRectMake(createAtX, createAtY, createAtSize.width, createAtSize.height);
-    _createAt.text=status.createdAt;
+    _createAt.text=status.createdTime;
     _createAt.frame=createAtRect;
     
     
     //设置设备信息大小和位置
-    CGSize sourceSize=[status.source sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kStatusTableViewCellSourceFontSize]}];
+    CGSize sourceSize=[status.verifiedSource sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kStatusTableViewCellSourceFontSize]}];
     CGFloat sourceX=CGRectGetMaxX(_createAt.frame)+kStatusTableViewCellControlSpacing;
     CGFloat sourceY=createAtY;
     CGRect sourceRect=CGRectMake(sourceX, sourceY, sourceSize.width,sourceSize.height);
-    _source.text=status.source;
+    _source.text=status.verifiedSource;
     _source.frame=sourceRect;
     
     
@@ -128,9 +127,9 @@
     CGFloat textX=avatarX;
     CGFloat textY=CGRectGetMaxY(_avatar.frame)+kStatusTableViewCellControlSpacing;
     CGFloat textWidth=self.frame.size.width-kStatusTableViewCellControlSpacing*2;
-    CGSize textSize=[status.user.city boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellTextFontSize]} context:nil].size;
+    CGSize textSize=[status.city boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellTextFontSize]} context:nil].size;
     CGRect textRect=CGRectMake(textX, textY, textSize.width, textSize.height);
-    _text.text=status.user.city;
+    _text.text=status.city;
     _text.frame=textRect;
     
     _height=CGRectGetMaxY(_text.frame)+kStatusTableViewCellControlSpacing;

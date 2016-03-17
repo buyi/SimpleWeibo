@@ -6,7 +6,7 @@
 //  Copyright © 2016年 buyi. All rights reserved.
 //
 
-#import "BYStatusCellsViewController.h"
+#import "BYUsersCellsViewController.h"
 
 //@implementation BYStatusCellsViewController
 //
@@ -15,16 +15,16 @@
 
 //#import "BYStaCellsViewController.h"
 #import "WeiboUser.h"
-#import "BYStatusTableViewCell.h"
+#import "BYUsersTableViewCell.h"
 
-@interface BYStatusCellsViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
+@interface BYUsersCellsViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
     UITableView *_tableView;
 //    NSMutableArray *_status;
     NSMutableArray *_statusCells;//存储cell，用于计算高度
 }
 @end
 
-@implementation BYStatusCellsViewController
+@implementation BYUsersCellsViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,11 +33,11 @@
 //    NSLog("")
     _statusCells=[[NSMutableArray alloc]init];
     
-    for (Status* object in _status) {
+    for (WeiboUser* object in _status) {
 //        NSLog(@"array=%@", object.screenName);
 //
 //         [_status addObject:object];
-        BYStatusTableViewCell *cell=[[BYStatusTableViewCell alloc]init];
+        BYUsersTableViewCell *cell=[[BYUsersTableViewCell alloc]init];
                 [_statusCells addObject:cell];
     }
     
@@ -80,10 +80,10 @@
 #pragma mark返回每行的单元格
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier=@"UITableViewCellIdentifierKey1";
-    BYStatusTableViewCell *cell;
+    BYUsersTableViewCell *cell;
     cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell){
-        cell=[[BYStatusTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell=[[BYUsersTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     //在此设置微博，以便重新布局
     WeiboUser *status=_status[indexPath.row];
@@ -95,7 +95,7 @@
 #pragma mark 重新设置单元格高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     //KCStatusTableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
-    BYStatusTableViewCell *cell= _statusCells[indexPath.row];
+    BYUsersTableViewCell *cell= _statusCells[indexPath.row];
     cell.status=_status[indexPath.row];
     return cell.height;
 }

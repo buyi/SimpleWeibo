@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Status.h"
+#import <WeiboUser.h>
 #import <UIKit/UIKit.h>
 
 //typedef float CGFloat;// 32-bit
 //typedef double CGFloat;// 64-bit
 
-@interface BYStatusTableViewCell : UITableViewCell
+@interface BYUsersTableViewCell : UITableViewCell
 
 
 #pragma mark 微博对象
-@property (nonatomic,strong) Status *status;
+@property (nonatomic,strong) WeiboUser *status;
 
 #pragma mark 单元格高度
 @property (assign,nonatomic) CGFloat height;
