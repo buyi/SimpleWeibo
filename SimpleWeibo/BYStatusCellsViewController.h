@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BYStatusCellsViewController : UIViewController
+@interface BYStatusCellsViewController : UITableViewController
 
 @property NSArray* status;
 

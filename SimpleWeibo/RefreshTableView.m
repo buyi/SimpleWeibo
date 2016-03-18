@@ -108,6 +108,8 @@
 
 -(void)setFooterView{
     // if the footerView is nil, then create it, reset the position of the footer
+    NSLog(@"contentSize height is @a", self.contentSize.height);
+    NSLog(@"frame height is @a", self.frame.size.height);
     CGFloat height = MAX(self.contentSize.height, self.frame.size.height);
     if (_refreshFooterView && [_refreshFooterView superview]) {
         // reset position
@@ -120,6 +122,8 @@
         _refreshFooterView = [[EGORefreshTableFooterView alloc] initWithFrame:
                               CGRectMake(0.0f, height,
                                          self.frame.size.width, self.bounds.size.height)];
+        
+        
         _refreshFooterView.delegate = self;
         [self addSubview:_refreshFooterView];
     }

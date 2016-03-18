@@ -9,6 +9,8 @@
 #import "BYStatusTableViewCell.h"
 #import "Status.h"
 #import "User.h"
+#import "EGOImageView.h"
+//@class EGOImageView;
 
 #define KCColor(r,g,b) [UIColor colorWithHue:r/255.0 saturation:g/255.0 brightness:b/255.0 alpha:1] //颜色宏定义
 #define kStatusTableViewCellControlSpacing 10 //控件间距
@@ -27,8 +29,10 @@
 
 
 @interface BYStatusTableViewCell(){
-    UIImageView *_avatar;//头像
-    UIImageView *_mbType;//会员类型
+//    UIImageView *_avatar;//头像
+    EGOImageView *_avatar;
+//    UIImageView *_mbType;//会员类型
+     EGOImageView *_mbType;
     UILabel *_userName;
     UILabel *_createAt;
     UILabel *_source;
@@ -50,7 +54,7 @@
 #pragma mark 初始化视图
 -(void)initSubView{
     //头像控件
-    _avatar=[[UIImageView alloc]init];
+    _avatar=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
     [self.contentView addSubview:_avatar];
     //用户名
     _userName=[[UILabel alloc]init];
@@ -58,7 +62,7 @@
     _userName.font=[UIFont systemFontOfSize:kStatusTableViewCellUserNameFontSize];
     [self.contentView addSubview:_userName];
     //会员类型
-    _mbType=[[UIImageView alloc]init];
+    _mbType=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
     [self.contentView addSubview:_mbType];
     //日期
     _createAt=[[UILabel alloc]init];
@@ -84,7 +88,12 @@
     //设置头像大小和位置
     CGFloat avatarX=10,avatarY=10;
     CGRect avatarRect=CGRectMake(avatarX, avatarY, kStatusTableViewCellAvatarWidth, kStatusTableViewCellAvatarHeight);
-    _avatar.image=[UIImage imageNamed:status.user.avatarLarge];
+    
+//      _avatar=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:status.user.profileImageUrl]];//声明对象
+//    [_avatar ini]
+    NSLog(@"photo is %@", status.user.avatarLarge);
+    _avatar.imageURL = [NSURL URLWithString:status.user.avatarLarge];//[NSURL URLWithString:urlStr];
+//    _avatar.image=[UIImage imageNamed:status.user.avatarLarge];
     _avatar.frame=avatarRect;
     
     
@@ -102,7 +111,9 @@
     CGFloat mbTypeX=CGRectGetMaxX(_userName.frame)+kStatusTableViewCellControlSpacing;
     CGFloat mbTypeY=avatarY;
     CGRect mbTypeRect=CGRectMake(mbTypeX, mbTypeY, kStatusTableViewCellMbTypeWidth, kStatusTableViewCellMbTypeHeight);
-    _mbType.image=[UIImage imageNamed:status.user.verifiedReason];
+//    _mbType.image=[UIImage imageNamed:status.user.verifiedReason];
+    
+    _mbType.imageURL = [NSURL URLWithString:status.bmiddlePic];
     _mbType.frame=mbTypeRect;
     
     

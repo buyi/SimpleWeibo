@@ -30,6 +30,9 @@
 //    NSLog("")
     _statusCells=[[NSMutableArray alloc]init];
     
+    
+    
+    
     for (Status* object in _status) {
 //        NSLog(@"array=%@", object.screenName);
 //
@@ -44,12 +47,22 @@
 //    [_tableView configHeaderUsing:YES footer:YES];
 //    _tableView.pullActionDelegate = self;
     
-    self->_tableView = [[RefreshTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    [self->_tableView configHeaderUsing:YES footer:YES];
-    [self->_tableView setBackgroundColor:[UIColor clearColor]];
-    self->_tableView.delegate = self;
-    self->_tableView.dataSource = self;
-    self->_tableView.pullActionDelegate = self;
+    _tableView = [[RefreshTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    [_tableView configHeaderUsing:YES footer:NO];
+    [_tableView setBackgroundColor:[UIColor clearColor]];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.pullActionDelegate = self;
+//    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//    _tableView.clipsToBounds = NO;
+//
+//    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+
+    
+//    CGRect tableViewframe = _tableView.frame;
+//    tableViewframe.size.height -= 65;
+//    _tableView.frame = tableViewframe;
+    
     [self.view addSubview:self->_tableView];
     
     //设置数据源，注意必须实现对应的UITableViewDataSource协议
