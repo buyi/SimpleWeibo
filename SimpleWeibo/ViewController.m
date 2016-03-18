@@ -14,7 +14,8 @@
 #import "DataHolder.h"
 #import "weiboUser.h"
 #import "BYUsersCellsViewController.h"
-#import "BYStatusCellsViewController.h"
+//#import "BYStatusCellsViewController.h"
+#import "MainViewController.h"
 #import "HttpBaseModel.h"
 #import "Status.h"
 #import "SBJSON.h"
@@ -160,7 +161,7 @@
 //              NSLog(@"isSuccess = %@", isSuccess);
           NSLog(@"array = %@", array);
         
-        BYStatusCellsViewController *first = [[BYStatusCellsViewController alloc]init];
+        MainViewController *first = [[MainViewController alloc]init];
         first.status = array;
         [blocksafeSelf.navigationController pushViewController:first animated:YES];
     
