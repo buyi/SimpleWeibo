@@ -95,12 +95,15 @@
         
         self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
         [DataHolder sharedInstance].wbtoken =[(WBAuthorizeResponse *)response accessToken];
+        [[NSUserDefaults standardUserDefaults] setObject:self.wbtoken forKey:@"wbtoken"];
 
         self.wbCurrentUserID = [(WBAuthorizeResponse *)response userID];
-         [DataHolder sharedInstance].wbCurrentUserID = [(WBAuthorizeResponse *)response userID];
+        [DataHolder sharedInstance].wbCurrentUserID = [(WBAuthorizeResponse *)response userID];
+        [[NSUserDefaults standardUserDefaults] setObject:self.wbCurrentUserID forKey:@"wbCurrentUserID"];
         
         self.wbRefreshToken = [(WBAuthorizeResponse *)response refreshToken];
-         [DataHolder sharedInstance].wbRefreshToken =[(WBAuthorizeResponse *)response refreshToken];
+        [DataHolder sharedInstance].wbRefreshToken =[(WBAuthorizeResponse *)response refreshToken];
+        [[NSUserDefaults standardUserDefaults] setObject:self.wbRefreshToken forKey:@"wbRefreshToken"];
         [alert show];
     }
 }

@@ -14,9 +14,7 @@
 #import "BYStatusTableViewCell.h"
 
 @interface BYStatusCellsViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
-//    UITableView *_tableView;
     RefreshTableView *_tableView;
-//    NSMutableArray *_status;
     NSMutableArray *_statusCells;//存储cell，用于计算高度
 }
 @end
@@ -117,7 +115,12 @@
     //KCStatusTableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     BYStatusTableViewCell *cell= _statusCells[indexPath.row];
     cell.status=_status[indexPath.row];
-    return cell.height;
+    
+    
+    
+     NSLog(@"heightForRowAtIndexPath=%@", cell.height);
+//    return cell.height;
+    return 200.f;
 }
 
 #pragma mark 重写状态样式方法

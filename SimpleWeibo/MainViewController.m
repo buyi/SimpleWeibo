@@ -13,6 +13,7 @@
 
 const NSInteger pull2RefreshHeaderHeight = 65;
 const NSInteger pull2RefreshFooterHeight = 50;
+int page = 1;
 
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -31,6 +32,8 @@ const NSInteger pull2RefreshFooterHeight = 50;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _request = [Request new];
 	
     pull2RefreshTableView = [[Pull2RefreshTableView alloc] initWithFrame:self.view.bounds showDragRefreshHeader:YES showDragRefreshFooter:YES];
     pull2RefreshTableView.dragHeaderHeight = pull2RefreshHeaderHeight;
@@ -49,6 +52,8 @@ const NSInteger pull2RefreshFooterHeight = 50;
         }
     };
     pull2RefreshTableView.dataSource = self;
+    //  不绑定的话 不会回调
+    pull2RefreshTableView.delegate = self;
     
     [self.view addSubview:pull2RefreshTableView];
     
@@ -144,6 +149,7 @@ const NSInteger pull2RefreshFooterHeight = 50;
 //    
 //    return cell;
     
+    
     static NSString *cellIdentifier=@"UITableViewCellIdentifierKey1";
     BYStatusTableViewCell *cell;
     cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -159,10 +165,42 @@ const NSInteger pull2RefreshFooterHeight = 50;
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    return 100;
-    BYStatusTableViewCell *cell= _statusCells[indexPath.row];
-    cell.status=_status[indexPath.row];
-    return cell.height;
+     NSLog(@"heightForRowAtIndexPath indexPath is %@", indexPath);
+    NSLog(@"heightForRowAtIndexPath section is %ld", (long)indexPath.section);
+    NSLog(@"heightForRowAtIndexPath row is %ld", (long)indexPath.row);
+     NSLog(@"_status.count size is %ld", (long)_status.count);
+    
+    if (indexPath.row >= _status.count)
+        return 0;
+    
+//    if ([indexPath.section indexes])
+    
+        BYStatusTableViewCell *cell= _statusCells[indexPath.row];
+        cell.status=_status[indexPath.row];
+       NSLog(@"heightForRowAtIndexPath height is %f", cell.height);
+        return cell.height;
+    
+//    return 500;
+//    BYStatusTableViewCell *cell= _statusCells[indexPath.row];
+//    cell.status=_status[indexPath.row];
+//    return cell.height;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+   
+    
+    return [pull2RefreshTableView tableView:tableView viewForHeaderInSection:section];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return [pull2RefreshTableView tableView:tableView heightForHeaderInSection:section];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     return [pull2RefreshTableView tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 #pragma mark 重写状态样式方法
@@ -171,9 +209,65 @@ const NSInteger pull2RefreshFooterHeight = 50;
 }
 
 #pragma mark - UIScrollViewDelegate
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    
+//}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+    return [pull2RefreshTableView scrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    return [pull2RefreshTableView scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+}
+
+
+- (void) testRequestForStatus {
+    [_request getStatusesWithSinceId:0 maxId:0 count:20 page:page++ feature:0 trimUser:0 success:^ (BOOL isSuccess, NSMutableArray *array) {
+        //              NSLog(@"isSuccess = %@", isSuccess);
+        NSLog(@"array = %@", array);
+              NSLog(@"array's size = %ld", array.count);
+        if (page == 2) {
+            
+            NSLog(@"before array's size = %ld", _status.count);
+            [_status removeAllObjects];
+            [_status addObjectsFromArray:array];
+            NSLog(@"after array's size = %ld", _status.count);
+            
+              [_statusCells removeAllObjects];
+            for (Status* object in _status) {
+                //        NSLog(@"array=%@", object.screenName);
+                //
+                //         [_status addObject:object];
+                BYStatusTableViewCell *cell=[[BYStatusTableViewCell alloc]init];
+                [_statusCells addObject:cell];
+            }
+            [pull2RefreshTableView reloadData];
+            [pull2RefreshTableView completeDragRefresh];
+        } else {
+            [_status addObjectsFromArray:array];
+            
+            [_statusCells removeAllObjects];
+            for (Status* object in _status) {
+                //        NSLog(@"array=%@", object.screenName);
+                //
+                //         [_status addObject:object];
+                BYStatusTableViewCell *cell=[[BYStatusTableViewCell alloc]init];
+                [_statusCells addObject:cell];
+            }
+            
+            [pull2RefreshTableView reloadData];
+            [pull2RefreshTableView completeDragRefresh];
+            
+            pull2RefreshTableView.shouldShowDragFooter = YES;
+            [pull2RefreshTableView addDragFooterView];
+        }
+        
+        
+    }];
 }
 
 #pragma mark - 模拟获取数据
@@ -185,6 +279,8 @@ const NSInteger pull2RefreshFooterHeight = 50;
 - (void)addMoreData
 {
     sleep(2);
+    NSLog(@"addMoreData");
+    [self testRequestForStatus];
     
 //    if (!dataSource)
 //    {
@@ -194,11 +290,11 @@ const NSInteger pull2RefreshFooterHeight = 50;
 //    NSArray *moreDataArr = [NSArray arrayWithObjects:@"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", nil];
 //    [dataSource addObject:moreDataArr];
     
-    [pull2RefreshTableView reloadData];
-    [pull2RefreshTableView completeDragRefresh];
-    
-    pull2RefreshTableView.shouldShowDragFooter = YES;
-    [pull2RefreshTableView addDragFooterView];
+//    [pull2RefreshTableView reloadData];
+//    [pull2RefreshTableView completeDragRefresh];
+//    
+//    pull2RefreshTableView.shouldShowDragFooter = YES;
+//    [pull2RefreshTableView addDragFooterView];
 }
 
 - (void)reloadInitDataInOtherThread
@@ -208,6 +304,9 @@ const NSInteger pull2RefreshFooterHeight = 50;
 
 - (void)reloadInitData
 {
+     NSLog(@"reloadInitData");
+    page = 1;
+    [self testRequestForStatus];
     sleep(20);
 //    if (dataSource.count > 0)
 //    {
@@ -217,8 +316,8 @@ const NSInteger pull2RefreshFooterHeight = 50;
 //    NSArray *initDataArr = [NSArray arrayWithObjects:@"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", @"Row", nil];
 //    [dataSource addObject:initDataArr];
     
-    [pull2RefreshTableView reloadData];
-    [pull2RefreshTableView completeDragRefresh];
+//    [pull2RefreshTableView reloadData];
+//    [pull2RefreshTableView completeDragRefresh];
 }
 
 @end

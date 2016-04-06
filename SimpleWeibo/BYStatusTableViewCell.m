@@ -9,8 +9,8 @@
 #import "BYStatusTableViewCell.h"
 #import "Status.h"
 #import "User.h"
+
 #import "EGOImageView.h"
-//@class EGOImageView;
 
 #define KCColor(r,g,b) [UIColor colorWithHue:r/255.0 saturation:g/255.0 brightness:b/255.0 alpha:1] //颜色宏定义
 #define kStatusTableViewCellControlSpacing 10 //控件间距
@@ -18,8 +18,9 @@
 #define kStatusGrayColor KCColor(50,50,50)
 #define kStatusLightGrayColor KCColor(120,120,120)
 
-#define kStatusTableViewCellAvatarWidth 40 //头像宽度
-#define kStatusTableViewCellAvatarHeight kStatusTableViewCellAvatarWidth
+#define kStatusTableViewCellAvatarWidth 80 //头像宽度
+#define kStatusTableViewCellAvatarHeight kStatusTableViewCellAvatarWidth //头像高度
+
 #define kStatusTableViewCellUserNameFontSize 14
 #define kStatusTableViewCellMbTypeWidth 13 //会员图标宽度
 #define kStatusTableViewCellMbTypeHeight kStatusTableViewCellMbTypeWidth
@@ -29,10 +30,10 @@
 
 
 @interface BYStatusTableViewCell(){
-//    UIImageView *_avatar;//头像
+    // 图片加载ImageView
     EGOImageView *_avatar;
-//    UIImageView *_mbType;//会员类型
-     EGOImageView *_mbType;
+//    EGOImageView *_mbType;
+    
     UILabel *_userName;
     UILabel *_createAt;
     UILabel *_source;
@@ -61,9 +62,9 @@
     _userName.textColor=kStatusGrayColor;
     _userName.font=[UIFont systemFontOfSize:kStatusTableViewCellUserNameFontSize];
     [self.contentView addSubview:_userName];
-    //会员类型
-    _mbType=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
-    [self.contentView addSubview:_mbType];
+//    //会员类型
+//    _mbType=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+//    [self.contentView addSubview:_mbType];
     //日期
     _createAt=[[UILabel alloc]init];
     _createAt.textColor=kStatusLightGrayColor;
@@ -85,66 +86,71 @@
 
 #pragma mark 设置微博
 -(void)setStatus:(Status *)status{
+    
     //设置头像大小和位置
-    CGFloat avatarX=10,avatarY=10;
-    CGRect avatarRect=CGRectMake(avatarX, avatarY, kStatusTableViewCellAvatarWidth, kStatusTableViewCellAvatarHeight);
+    CGFloat avatarX = 10, avatarY = 10;
+    CGRect avatarRect = CGRectMake(avatarX, avatarY, kStatusTableViewCellAvatarWidth, kStatusTableViewCellAvatarHeight);
     
-//      _avatar=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:status.user.profileImageUrl]];//声明对象
-//    [_avatar ini]
-    NSLog(@"photo is %@", status.user.avatarLarge);
-    _avatar.imageURL = [NSURL URLWithString:status.user.avatarLarge];//[NSURL URLWithString:urlStr];
-//    _avatar.image=[UIImage imageNamed:status.user.avatarLarge];
-    _avatar.frame=avatarRect;
+//    NSLog(@"photo is %@", status.user.avatarLarge);
+    _avatar.imageURL = [NSURL URLWithString:status.user.avatarLarge];
+    _avatar.frame = avatarRect;
     
     
-    //设置会员图标大小和位置
-    CGFloat userNameX= CGRectGetMaxX(_avatar.frame)+kStatusTableViewCellControlSpacing ;
-    CGFloat userNameY=avatarY;
+    //设置会员名称大小和位置
+    CGFloat userNameX = CGRectGetMaxX(_avatar.frame) + kStatusTableViewCellControlSpacing ;
+    CGFloat userNameY = avatarY;
     //根据文本内容取得文本占用空间大小
-    CGSize userNameSize=[status.user.screenName sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellUserNameFontSize]}];
-    CGRect userNameRect=CGRectMake(userNameX, userNameY, userNameSize.width,userNameSize.height);
+    CGSize userNameSize = [status.user.screenName sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellUserNameFontSize]}];
+    CGRect userNameRect = CGRectMake(userNameX, userNameY, userNameSize.width,userNameSize.height);
     _userName.text=status.user.screenName;
     _userName.frame=userNameRect;
     
     
-    //设置会员图标大小和位置
-    CGFloat mbTypeX=CGRectGetMaxX(_userName.frame)+kStatusTableViewCellControlSpacing;
-    CGFloat mbTypeY=avatarY;
-    CGRect mbTypeRect=CGRectMake(mbTypeX, mbTypeY, kStatusTableViewCellMbTypeWidth, kStatusTableViewCellMbTypeHeight);
-//    _mbType.image=[UIImage imageNamed:status.user.verifiedReason];
+//    //设置会员图标大小和位置
+//    CGFloat mbTypeX=CGRectGetMaxX(_userName.frame)+kStatusTableViewCellControlSpacing;
+//    CGFloat mbTypeY=avatarY;
+//    CGRect mbTypeRect=CGRectMake(mbTypeX, mbTypeY, kStatusTableViewCellMbTypeWidth, kStatusTableViewCellMbTypeHeight);
+////    _mbType.image=[UIImage imageNamed:status.user.verifiedReason];
+//    
+//    _mbType.imageURL = [NSURL URLWithString:status.bmiddlePic];
+//    _mbType.frame=mbTypeRect;
     
-    _mbType.imageURL = [NSURL URLWithString:status.bmiddlePic];
-    _mbType.frame=mbTypeRect;
+    
+    
+    
+    
+    //设置微博内容大小和位置
+    CGFloat textX = userNameX;
+    CGFloat textY = CGRectGetMaxY(_userName.frame) + kStatusTableViewCellControlSpacing;
+    CGFloat textWidth = self.frame.size.width - kStatusTableViewCellControlSpacing * 2;
+    CGSize textSize=[status.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellTextFontSize]} context:nil].size;
+    CGRect textRect = CGRectMake(textX, textY, textSize.width, textSize.height);
+    _text.text = status.text;
+    
+    _text.frame = textRect;
+     NSLog(@"_text is %@", _text.text);
+    
     
     
     //设置发布日期大小和位置
     CGSize createAtSize=[status.createdAt sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kStatusTableViewCellCreateAtFontSize]}];
-    CGFloat createAtX=userNameX;
-    CGFloat createAtY=CGRectGetMaxY(_avatar.frame)-createAtSize.height;
-    CGRect createAtRect=CGRectMake(createAtX, createAtY, createAtSize.width, createAtSize.height);
-    _createAt.text=status.createdAt;
-    _createAt.frame=createAtRect;
+    CGFloat createAtX = userNameX;
+    CGFloat createAtY = CGRectGetMaxY(_text.frame)+ kStatusTableViewCellControlSpacing;
+    CGRect createAtRect = CGRectMake(createAtX, createAtY, createAtSize.width, createAtSize.height);
+    _createAt.text = status.createdAt;
+    _createAt.frame = createAtRect;
     
     
     //设置设备信息大小和位置
-    CGSize sourceSize=[status.source sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kStatusTableViewCellSourceFontSize]}];
-    CGFloat sourceX=CGRectGetMaxX(_createAt.frame)+kStatusTableViewCellControlSpacing;
-    CGFloat sourceY=createAtY;
-    CGRect sourceRect=CGRectMake(sourceX, sourceY, sourceSize.width,sourceSize.height);
-    _source.text=status.source;
-    _source.frame=sourceRect;
+    CGSize sourceSize = [status.source sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kStatusTableViewCellSourceFontSize]}];
+    CGFloat sourceX = userNameX;//CGRectGetMaxX(_createAt.frame) ;
+    CGFloat sourceY = createAtY + kStatusTableViewCellControlSpacing;
+    CGRect sourceRect = CGRectMake(sourceX, sourceY, sourceSize.width,sourceSize.height);
+    _source.text = status.source;
+    _source.frame = sourceRect;
     
     
-    //设置微博内容大小和位置
-    CGFloat textX=avatarX;
-    CGFloat textY=CGRectGetMaxY(_avatar.frame)+kStatusTableViewCellControlSpacing;
-    CGFloat textWidth=self.frame.size.width-kStatusTableViewCellControlSpacing*2;
-    CGSize textSize=[status.user.city boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:kStatusTableViewCellTextFontSize]} context:nil].size;
-    CGRect textRect=CGRectMake(textX, textY, textSize.width, textSize.height);
-    _text.text=status.user.city;
-    _text.frame=textRect;
-    
-    _height=CGRectGetMaxY(_text.frame)+kStatusTableViewCellControlSpacing;
+    _height = CGRectGetMaxY(_source.frame)+kStatusTableViewCellControlSpacing;
 }
 
 #pragma mark 重写选择事件，取消选中

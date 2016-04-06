@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Request.h"
 
 @interface MainViewController : UIViewController
-@property NSArray* status;
+@property NSMutableArray* status;
+@property (strong, nonatomic) Request *request;
 @end

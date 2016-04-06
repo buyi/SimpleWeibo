@@ -8,6 +8,7 @@
 
 #import "HttpBaseModel.h"
 
+
 @implementation HttpBaseModel
 
 + (void)getDataResponseHostName:(NSString *)hostName
