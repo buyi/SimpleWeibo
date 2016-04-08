@@ -125,9 +125,9 @@
     
 //    if (self.imageSwitch.on)
 //    {
-//        WBImageObject *image = [WBImageObject object];
-//        image.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_1" ofType:@"jpg"]];
-//        message.imageObject = image;
+        WBImageObject *image = [WBImageObject object];
+        image.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_1" ofType:@"jpg"]];
+        message.imageObject = image;
 //    }
 //    
 //    if (self.mediaSwitch.on)
@@ -159,7 +159,7 @@
       __weak ViewController *blocksafeSelf = self;
     [_request getStatusesWithSinceId:0 maxId:0 count:20 page:1 feature:0 trimUser:0 success:^ (BOOL isSuccess, NSMutableArray *array) {
 //              NSLog(@"isSuccess = %@", isSuccess);
-          NSLog(@"array = %@", array);
+//          NSLog(@"array = %@", array);
         
         MainViewController *first = [[MainViewController alloc]init];
         first.status = array;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A510FE73AE1FDF8A90E442F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD493F95473695631A6DB86 /* libPods.a */; };
 		E724FDC01CB5009B003CCB8C /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = E724FDBF1CB5009B003CCB8C /* Request.m */; };
+		E724FDC21CB7FCA6003CCB8C /* image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E724FDC11CB7FCA6003CCB8C /* image_1.jpg */; };
 		E72D9A201C9AAC8A00B38CCA /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */; };
 		E72D9A331C9AC00B00B38CCA /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A2B1C9AC00B00B38CCA /* EGORefreshTableFooterView.m */; };
 		E72D9A341C9AC00B00B38CCA /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A2D1C9AC00B00B38CCA /* EGORefreshTableHeaderView.m */; };
@@ -82,6 +83,7 @@
 		E20A1EC5BEEA405C3235C3DC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E724FDBE1CB5009B003CCB8C /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		E724FDBF1CB5009B003CCB8C /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		E724FDC11CB7FCA6003CCB8C /* image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_1.jpg; sourceTree = "<group>"; };
 		E72D9A1E1C9AAC8A00B38CCA /* RefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableView.h; sourceTree = "<group>"; };
 		E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableView.m; sourceTree = "<group>"; };
 		E72D9A2A1C9AC00B00B38CCA /* EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableFooterView.h; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 		E7A7B5231C43529C0023E4AC /* SimpleWeibo */ = {
 			isa = PBXGroup;
 			children = (
+				E724FDC11CB7FCA6003CCB8C /* image_1.jpg */,
 				E72D9A621C9BFE8000B38CCA /* MainViewController.h */,
 				E72D9A631C9BFE8000B38CCA /* MainViewController.m */,
 				E72D9A5A1C9BFE4600B38CCA /* arrow_up.png */,
@@ -590,6 +593,7 @@
 				E72D9A5F1C9BFE4600B38CCA /* arrow_up@2x.png in Resources */,
 				E72D9A601C9BFE4600B38CCA /* shadow_up.png in Resources */,
 				E7A7B5311C43529C0023E4AC /* Assets.xcassets in Resources */,
+				E724FDC21CB7FCA6003CCB8C /* image_1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

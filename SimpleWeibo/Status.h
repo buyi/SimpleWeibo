@@ -58,7 +58,14 @@
     
     NSString            *_visibleListId;
     
+    NSArray             *_pic_urls;
+    
+    
+    
+    
 }
+//why this is must be retain
+@property (nonatomic, retain)NSArray *pic_urls;
 
 /**
  *	微博创建时间

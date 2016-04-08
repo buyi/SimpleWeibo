@@ -651,6 +651,7 @@ OSStatus extractIdentityAndTrust(CFDataRef inPKCS12Data,
       finalURL = [NSURL URLWithString:aURLString];
     }
     
+      NSLog(@"url is %@", finalURL);
     if(finalURL == nil) {
       
       DLog(@"Cannot create a URL with %@ and parameters %@ and method %@", aURLString, self.fieldsToBePosted, method);

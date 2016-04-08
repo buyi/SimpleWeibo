@@ -56,7 +56,7 @@
     [HttpBaseModel getDataResponseHostName:HOSTURL Path:@"2/statuses/home_timeline.json" params:dic httpMethod:@"GET" onCompletion:^(NSData *responseData){
         
         NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-        NSLog(@"responseString = %@", responseString);
+//        NSLog(@"responseString = %@", responseString);
         
         SBJSON *json = [[SBJSON alloc] init];
         NSError *error = nil;

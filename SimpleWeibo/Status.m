@@ -58,6 +58,8 @@
 
 @synthesize visibleListId = _visibleListId;
 
+@synthesize pic_urls = _pic_urls;
+
 - (void)dealloc
 {
 //    [_createdAt release];
@@ -92,6 +94,7 @@
 {
     Status *aStatus = [[Status alloc] init];
     aStatus.createdAt = [dic objectForKey:@"created_at"];
+    aStatus.pic_urls = [dic objectForKey:@"pic_urls"];
     aStatus.statusId = [dic objectForKey:@"id"];
     aStatus.statusMId = [dic objectForKey:@"mid"];
     aStatus.text = [dic objectForKey:@"text"];

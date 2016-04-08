@@ -21,6 +21,10 @@
 #define kStatusTableViewCellAvatarWidth 80 //头像宽度
 #define kStatusTableViewCellAvatarHeight kStatusTableViewCellAvatarWidth //头像高度
 
+
+#define kStatusTableViewCellImageWidth 40
+#define kStatusTableViewCellImageHeight kStatusTableViewCellImageWidth
+
 #define kStatusTableViewCellUserNameFontSize 14
 #define kStatusTableViewCellMbTypeWidth 13 //会员图标宽度
 #define kStatusTableViewCellMbTypeHeight kStatusTableViewCellMbTypeWidth
@@ -32,6 +36,16 @@
 @interface BYStatusTableViewCell(){
     // 图片加载ImageView
     EGOImageView *_avatar;
+    EGOImageView *_image1;
+    EGOImageView *_image2;
+    EGOImageView *_image3;
+    EGOImageView *_image4;
+    EGOImageView *_image5;
+    EGOImageView *_image6;
+    EGOImageView *_image7;
+    EGOImageView *_image8;
+    EGOImageView *_image9;
+    NSMutableArray* images;
 //    EGOImageView *_mbType;
     
     UILabel *_userName;
@@ -54,9 +68,49 @@
 
 #pragma mark 初始化视图
 -(void)initSubView{
+    
+    images = [NSMutableArray new];
     //头像控件
     _avatar=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
     [self.contentView addSubview:_avatar];
+   
+    
+    
+    _image1=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image1];
+     [images addObject:_image1];
+    
+    _image2=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image2];
+     [images addObject:_image2];
+    
+    _image3=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image3];
+     [images addObject:_image3];
+    
+    _image4=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image4];
+     [images addObject:_image4];
+    
+    _image5=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image5];
+     [images addObject:_image5];
+    
+    _image6=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image6];
+     [images addObject:_image6];
+    
+    _image7=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image7];
+     [images addObject:_image7];
+    
+    _image8=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image8];
+     [images addObject:_image8];
+    
+    _image9=[[EGOImageView alloc] initWithPlaceholderImage:[UIImage new]];
+    [self.contentView addSubview:_image9];
+     [images addObject:_image9];
     //用户名
     _userName=[[UILabel alloc]init];
     _userName.textColor=kStatusGrayColor;
@@ -87,6 +141,20 @@
 #pragma mark 设置微博
 -(void)setStatus:(Status *)status{
     
+    if (status.retweetedStatus != NULL) {
+        NSLog(@"转发微博不为空");
+    } else {
+        NSLog(@"转发微博为空");
+    }
+    
+    if (status.pic_urls != NULL) {
+        for (NSDictionary *temp in  status.pic_urls) {
+            NSLog(@"temp is %@", [temp valueForKey:@"thumbnail_pic"]);
+        }
+    } else {
+        NSLog(@"图片为空");
+    }
+     
     //设置头像大小和位置
     CGFloat avatarX = 10, avatarY = 10;
     CGRect avatarRect = CGRectMake(avatarX, avatarY, kStatusTableViewCellAvatarWidth, kStatusTableViewCellAvatarHeight);
@@ -149,8 +217,45 @@
     _source.text = status.source;
     _source.frame = sourceRect;
     
+//   
+//    NSString* temp1;
+//    if (status.pic_urls != NULL) {
+//        for (NSDictionary *temp in  status.pic_urls) {
+//            NSLog(@"temp is %@", [temp valueForKey:@"thumbnail_pic"]);
+//            temp1 = [temp valueForKey:@"thumbnail_pic"];
+//           
+//        }
+//    }
     
-    _height = CGRectGetMaxY(_source.frame)+kStatusTableViewCellControlSpacing;
+    
+    NSUInteger size = status.pic_urls.count;
+    NSLog(@"pic's count is %lu", (unsigned long)size);
+          NSLog(@"EGOImageView's images is %@", images);
+//          NSLog(@"EGOImageView's images coount is %@", images.count);
+    CGRect imageSizeCount;
+    
+    for (int i = 0; i< size; i++) {
+    
+      CGRect imageSize = CGRectMake(userNameX + kStatusTableViewCellControlSpacing* (i %3), sourceY+ kStatusTableViewCellControlSpacing * (i / 3 + 2), kStatusTableViewCellImageWidth , kStatusTableViewCellImageHeight );
+       EGOImageView  *image = [images objectAtIndex:i];
+          NSLog(@"EGOImageView's image is %@", image);
+           NSLog(@"EGOImageView's url is %@", [status.pic_urls objectAtIndex:i]);
+        image.imageURL = [NSURL URLWithString:[[status.pic_urls objectAtIndex:i] valueForKey: @"thumbnail_pic"]];
+        image.frame = imageSize;
+        imageSizeCount = imageSize;
+    }
+//    CGRect imageSize = CGRectMake(userNameX, sourceY+ kStatusTableViewCellControlSpacing, kStatusTableViewCellImageWidth, kStatusTableViewCellImageHeight);
+//    _image.imageURL = [NSURL URLWithString:temp1];
+//    _image.frame = imageSize;
+    
+    if (status.pic_urls.count == 0) {
+        imageSizeCount = sourceRect;
+        
+    } else {
+        
+        imageSizeCount = ((EGOImageView*)[images objectAtIndex:(status.pic_urls.count - 1)]).frame;
+    }
+    _height = CGRectGetMaxY(imageSizeCount)+kStatusTableViewCellControlSpacing;
 }
 
 #pragma mark 重写选择事件，取消选中
