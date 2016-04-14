@@ -10,6 +10,7 @@
 		3A510FE73AE1FDF8A90E442F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD493F95473695631A6DB86 /* libPods.a */; };
 		E724FDC01CB5009B003CCB8C /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = E724FDBF1CB5009B003CCB8C /* Request.m */; };
 		E724FDC21CB7FCA6003CCB8C /* image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E724FDC11CB7FCA6003CCB8C /* image_1.jpg */; };
+		E729C2051CBF90B800DFCEDA /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E729C2041CBF90B800DFCEDA /* ImageViewController.m */; };
 		E72D9A201C9AAC8A00B38CCA /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */; };
 		E72D9A331C9AC00B00B38CCA /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A2B1C9AC00B00B38CCA /* EGORefreshTableFooterView.m */; };
 		E72D9A341C9AC00B00B38CCA /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D9A2D1C9AC00B00B38CCA /* EGORefreshTableHeaderView.m */; };
@@ -84,6 +85,8 @@
 		E724FDBE1CB5009B003CCB8C /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		E724FDBF1CB5009B003CCB8C /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		E724FDC11CB7FCA6003CCB8C /* image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_1.jpg; sourceTree = "<group>"; };
+		E729C2031CBF90B800DFCEDA /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		E729C2041CBF90B800DFCEDA /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		E72D9A1E1C9AAC8A00B38CCA /* RefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableView.h; sourceTree = "<group>"; };
 		E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableView.m; sourceTree = "<group>"; };
 		E72D9A2A1C9AC00B00B38CCA /* EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableFooterView.h; sourceTree = "<group>"; };
@@ -356,6 +359,8 @@
 				E7BE85641C9817620093C3EB /* BYUsersTableViewCell.m */,
 				E72D9A1E1C9AAC8A00B38CCA /* RefreshTableView.h */,
 				E72D9A1F1C9AAC8A00B38CCA /* RefreshTableView.m */,
+				E729C2031CBF90B800DFCEDA /* ImageViewController.h */,
+				E729C2041CBF90B800DFCEDA /* ImageViewController.m */,
 			);
 			path = SimpleWeibo;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 				E72D9A4F1C9BDCFA00B38CCA /* EGOImageButton.m in Sources */,
 				E7BE85A41C9A4A970093C3EB /* User.m in Sources */,
 				E72D9A641C9BFE8000B38CCA /* MainViewController.m in Sources */,
+				E729C2051CBF90B800DFCEDA /* ImageViewController.m in Sources */,
 				E7BE85941C9950960093C3EB /* Reachability.m in Sources */,
 				E7BE858B1C9950960093C3EB /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				E7BE85921C9950960093C3EB /* MKNetworkEngine.m in Sources */,

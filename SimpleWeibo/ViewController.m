@@ -14,7 +14,7 @@
 #import "DataHolder.h"
 #import "weiboUser.h"
 #import "BYUsersCellsViewController.h"
-//#import "BYStatusCellsViewController.h"
+#import "ImageViewController.h"
 #import "MainViewController.h"
 
 
@@ -77,6 +77,12 @@
     [statussButton addTarget:self action:@selector(testRequestForStatus) forControlEvents:UIControlEventTouchUpInside];
     statussButton.frame = CGRectMake(240, 140, 280, 40);
     [scrollView addSubview:statussButton];
+    
+    UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [photoButton setTitle:NSLocalizedString(@"photo", nil) forState:UIControlStateNormal];
+    [photoButton addTarget:self action:@selector(photo) forControlEvents:UIControlEventTouchUpInside];
+    photoButton.frame = CGRectMake(240, 190, 280, 40);
+    [scrollView addSubview:photoButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,6 +159,11 @@
         DemoRequestHanlder(httpRequest, result, error, blocksafeSelf);
         
     }];
+}
+
+- (void) photo {
+    ImageViewController *first = [[ImageViewController alloc]init];
+    [self.navigationController pushViewController:first animated:YES];
 }
 
 - (void) testRequestForStatus {
